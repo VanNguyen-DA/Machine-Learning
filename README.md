@@ -9,6 +9,5 @@ This project using the data from SKU sales of factory. The purpose is forecastin
 │   └── utils/            # Utility scripts and plotting functions
 ├── forecast_env/         # Virtual environment
 ├── models/               # Saved trained model and model artifacts
-├── requirements.txt      # Project dependencies
 ├── .gitignore
 └── .dvcignore
