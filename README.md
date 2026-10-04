@@ -131,8 +131,19 @@ The first step focused on understanding data quality, identifying patterns, and 
 
 ## Overview Data
 
+<img width="1099" height="1085" alt="image" src="https://github.com/user-attachments/assets/35293559-b361-4d43-9c63-b61b1dbab7c5" />
 
 ## Missing value analysis
+
+<img width="1372" height="1492" alt="image" src="https://github.com/user-attachments/assets/a4185e56-f6e7-4715-ac0d-ba1bc21c310b" />
+
+<img width="1037" height="757" alt="image" src="https://github.com/user-attachments/assets/c322b52c-046b-442f-8e66-442185d99692" />
+
+## EDA
+<img width="1077" height="1666" alt="image" src="https://github.com/user-attachments/assets/eed70d56-714c-4d74-87c1-aca06cce5ecf" />
+
+<img width="1181" height="1492" alt="image" src="https://github.com/user-attachments/assets/69add821-cfab-4c39-821e-266dbf0e96ee" />
+
 
 - Missing value imputation
 - Outlier correction
