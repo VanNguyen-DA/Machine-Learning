@@ -118,198 +118,36 @@ Each row represents sales activity of a SKU on a specific date and sales channel
 # Analysis Process
 
 ---
+https://github.com/VanNguyen-DA/Machine-Learning/blob/main/Final%20Project_Nguyen%20Thi%20Thanh%20Van_MachineLearning.ipynb
 
 # 1. EDA & Data Processing
-
-The first step focused on understanding data quality, identifying patterns, and preparing the dataset for modeling.
-
-### Main Activities
-
-## Import Necessary Libraries
-
-<img width="1348" height="1288" alt="image" src="https://github.com/user-attachments/assets/954295f2-daa5-4877-9997-2952c48b7a77" />
-
-## Overview Data
-
-<img width="1099" height="1085" alt="image" src="https://github.com/user-attachments/assets/35293559-b361-4d43-9c63-b61b1dbab7c5" />
-
-## Missing value analysis
-
-<img width="1372" height="1492" alt="image" src="https://github.com/user-attachments/assets/a4185e56-f6e7-4715-ac0d-ba1bc21c310b" />
-
-<img width="1037" height="757" alt="image" src="https://github.com/user-attachments/assets/c322b52c-046b-442f-8e66-442185d99692" />
-
-## EDA
-<img width="1077" height="1666" alt="image" src="https://github.com/user-attachments/assets/eed70d56-714c-4d74-87c1-aca06cce5ecf" />
-
-<img width="1181" height="1492" alt="image" src="https://github.com/user-attachments/assets/69add821-cfab-4c39-821e-266dbf0e96ee" />
-
-<img width="1442" height="1325" alt="image" src="https://github.com/user-attachments/assets/4284b47d-8cdf-428e-8836-00df4dfc053d" />
-
-<img width="2156" height="1666" alt="image" src="https://github.com/user-attachments/assets/ea2bf92a-c395-4199-860d-8e9bfdc5cdaf" />
-
-<img width="1454" height="1539" alt="image" src="https://github.com/user-attachments/assets/e41f40a4-3e6c-4978-983c-98f872acd19d" />
-
-<img width="1288" height="1642" alt="image" src="https://github.com/user-attachments/assets/808db020-b417-46c9-9f36-5fa6b34e3ab1" />
-
-- Missing value imputation
-- Outlier correction
-- Correlation analysis
-- Demand distribution analysis
-- Holiday impact analysis
-- Seasonality and trend analysis
-- Pareto analysis to identify top revenue-generating SKUs
-
+- Import Necessary Libraries and Data Source
+- Overview data
+- Fill missing values
+- EDA
+- Handle Outlier
 ---
 
 # 2. Feature Engineering
-
-To improve prediction performance, multiple time-based and business-driven features were created.
-
-## Temporal Features
-
-- Month
-- Day
-- Day of Week
-- Week of Year
-- Quarter
-- Weekend Indicator
-- Even/Odd Day Indicator
-
-## Holiday Features
-
-- New Year
-- Lunar New Year (Tet Holiday)
-- National Holidays
-- Christmas
-
-## SKU Behavioral Features
-
-- Average sales by weekday
-- Average sales by month
-
-## Time-Series Features
-
-### Lag Features
-
-- Lag 1
-- Lag 7
-- Lag 30
-
-### Rolling Statistics
-
-- Rolling Mean (7 Days)
-- Rolling Mean (30 Days)
-- Rolling Standard Deviation (7 Days)
-- Rolling Standard Deviation (30 Days)
-
-## Target Transformation
-
-To reduce skewness and stabilize variance:
-
-```python
-qty_log = np.log1p(qty)
-```
-
+- Import Necessary Libraties and Data Source
+- Temporal and holiday features
+- Add features of SKU
+- Transform qty to log(qty) to avoid scale with 0
+- Add lag and moving_average features
 ---
 
 # 3. Train & Applying Model
-
-Several machine learning approaches were evaluated.
-
-## Baseline Model
-
-### Random Forest Regressor
-
-Performance:
-
-| Metric | Result |
-|----------|----------|
-| R² | 0.607 |
-| MAE | 107.85 |
-| RMSE | 208.78 |
-| WMAPE | 46.42% |
-
----
-
-## Final Model
-
-### LightGBM Regressor
-
-Reasons for selection:
-
-- Strong performance on tabular data
-- Handles non-linear relationships effectively
-- Supports categorical variables
-- Fast training and inference
-- Highly scalable
-
-## Validation Strategy
-
-A **TimeSeriesSplit** approach was applied to preserve temporal order and prevent data leakage.
-
-## Hyperparameter Optimization
-
-Optuna was used to optimize:
-
-- num_leaves
-- learning_rate
-- feature_fraction
-- bagging_fraction
-- bagging_freq
-- min_child_samples
-
-## Final Model Performance
-
-| Metric | Result |
-|----------|----------|
-| MAE | 0.54 |
-| RMSE | 0.76 |
-| WMAPE | 11.55% |
-
-The optimized LightGBM model significantly outperformed the Random Forest baseline.
-
+- Import Necessary Libraties and Data Source
+- Split train/ test
+- Apply model
+- Optuna for tuning LightGBM model
+- Save Model
 ---
 
 # 4. Explaining Model
-
-Model interpretability is critical for business adoption.
-
-To explain the forecasting results, SHAP (SHapley Additive Explanations) was applied.
-
-## Global Explanation
-
-Top features impacting sales forecasts:
-
-| Rank | Feature |
-|--------|---------|
-| 1 | rolling_mean_7 |
-| 2 | channel |
-| 3 | mean_qty_sku_month |
-| 4 | rolling_std_7 |
-| 5 | rolling_mean_30 |
-| 6 | lag1 |
-| 7 | dayofweek |
-| 8 | weekofyear |
-| 9 | MOQ_orders |
-| 10 | day |
-
-### Insights
-
-- Historical demand patterns are the strongest predictors.
-- Sales channels influence SKU demand.
-- Seasonality and calendar effects contribute to prediction performance.
-- Recent sales trends significantly improve forecasting accuracy.
-
-## Local Explanation
-
-SHAP was also used to explain individual predictions:
-
-- Why demand is expected to increase.
-- Why demand is expected to decrease.
-- Which features contribute most to each forecast.
-
-This provides transparency and improves business trust in the forecasting system.
+- Load model and data
+- Predict and Evaluation
+- Explain model - SHAP
 
 ---
 
