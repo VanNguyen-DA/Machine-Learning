@@ -144,6 +144,11 @@ The first step focused on understanding data quality, identifying patterns, and 
 
 <img width="1181" height="1492" alt="image" src="https://github.com/user-attachments/assets/69add821-cfab-4c39-821e-266dbf0e96ee" />
 
+<img width="1442" height="1325" alt="image" src="https://github.com/user-attachments/assets/4284b47d-8cdf-428e-8836-00df4dfc053d" />
+
+<img width="2156" height="1666" alt="image" src="https://github.com/user-attachments/assets/ea2bf92a-c395-4199-860d-8e9bfdc5cdaf" />
+
+<img width="1454" height="1539" alt="image" src="https://github.com/user-attachments/assets/e41f40a4-3e6c-4978-983c-98f872acd19d" />
 
 - Missing value imputation
 - Outlier correction
