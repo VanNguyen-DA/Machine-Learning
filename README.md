@@ -127,20 +127,24 @@ The first step focused on understanding data quality, identifying patterns, and 
 
 - Import Necessary Libraries
 [In]
-```
-import numpy as np
+# Import necessary libraries
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import holidays
-
-import ipywidgets as widgets
-from ipywidgets import interact, fixed
-import calendar
-import random
-
-import warnings
-warnings.filterwarnings('ignore')
+from sklearn.preprocessing import LabelEncoder, StandardScaler, RobustScaler
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.model_selection import train_test_split, GridSearchCV, RandomizedSearchCV
+from sklearn.metrics import (
+    accuracy_score, balanced_accuracy_score, recall_score, 
+    precision_score, f1_score, confusion_matrix, silhouette_score
+)
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+import xgboost as xgb
+from sklearn.decomposition import PCA
+import scipy.cluster.hierarchy as sch
+from sklearn.cluster import AgglomerativeClustering
 ```
 
 - Missing value analysis
